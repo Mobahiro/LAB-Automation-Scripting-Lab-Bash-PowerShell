@@ -1,4 +1,3 @@
-# Simple ping list script.
 $ComputersFile = "C:\Users\Shiro\Desktop\PingLogs\computers.txt"
 $LogFile = "C:\Users\Shiro\Desktop\PingLogs\ping_results.log"
 $LogDir = Split-Path $LogFile -Parent
