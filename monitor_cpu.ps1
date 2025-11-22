@@ -1,8 +1,6 @@
-# Simple CPU monitor: logs overall CPU every 5 seconds.
 $LogFile = "C:\Logs\CPU_Usage.txt"
 $IntervalSeconds = 5
 
-# Ensure log directory exists
 $Dir = Split-Path $LogFile -Parent
 if (-not (Test-Path $Dir)) { New-Item -Type Directory -Path $Dir | Out-Null }
 
