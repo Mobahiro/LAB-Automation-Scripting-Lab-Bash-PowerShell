@@ -6,14 +6,12 @@ RETENTION_DAYS=7
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 ARCHIVE="home_backup_${TIMESTAMP}.tar.gz"
 
-# Make sure destination exists
 if [ ! -d "$BACKUP_DEST" ]; then
     mkdir -p "$BACKUP_DEST" || { echo "Could not create $BACKUP_DEST"; exit 1; }
 fi
 
 echo "Starting backup of $BACKUP_SOURCE"
 
-# Create archive
 if tar -czf "$BACKUP_DEST/$ARCHIVE" "$BACKUP_SOURCE"; then
     SIZE=$(du -h "$BACKUP_DEST/$ARCHIVE" | cut -f1)
     echo "Backup done: $ARCHIVE (Size: $SIZE)"
@@ -22,7 +20,6 @@ else
     exit 1
 fi
 
-# Remove old backups
 echo "Removing backups older than $RETENTION_DAYS days"
 find "$BACKUP_DEST" -type f -name "home_backup_*.tar.gz" -mtime +$RETENTION_DAYS -print -delete
 
